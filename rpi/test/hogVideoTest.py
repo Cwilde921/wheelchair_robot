@@ -13,7 +13,7 @@ hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 
 def detectPeople(image, hog):
     #resize image to increase speed and acuracy
-    image = imutils.resize(image, width=min(400, image.shape[1]))
+    #image = imutils.resize(image, width=min(400, image.shape[1]))
     #apply hog descriptor to detect people in image
     rects, weights = hog.detectMultiScale(image, winStride=(4, 4), padding=(8, 8), scale=1.05)
     #apply non-maxima supression 
@@ -27,9 +27,9 @@ def detectPeople(image, hog):
 
 camera = PiCamera()
 #camera.rotation = 180
-#camera.resolution=(640, 480)
-camera.framerate = 10
-rawCapture = PiRGBArray(camera)#, size=(640, 480))
+camera.resolution= (304, 256)#(640, 480)
+camera.framerate = 30
+rawCapture = PiRGBArray(camera, size=(304,256))#(640, 480))
 
 #camera.start_preview(alpha=150)
 #time.sleep(10)
